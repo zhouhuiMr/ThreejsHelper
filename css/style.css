@@ -1,0 +1,45 @@
+*{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    border: none;
+}
+html,body{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    overflow: hidden;
+}
+[v-cloak] {
+    display: none !important;
+}
+
+#container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 0;
+}
+#app{
+    position: absolute;
+    float: left;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+}
+#app .controller_span{
+    float: right;
+    width: 200px;
+    height: auto;
+    background: #ffffff;
+    padding: 2px 5px 2px 5px;
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+}
+.collapse-item-style{
+    font-family: Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,\\5B8B\4F53,sans-serif;
+}
