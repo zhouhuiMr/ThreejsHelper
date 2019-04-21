@@ -10,20 +10,42 @@
 <!--       canvas container      -->
 
 <div id="app" v-cloak>
-    <div id="container" @mousedown="workPanelClick"></div>
+    <div id="container" @mouseenter="workPanelClick"></div>
     <div class="controller_span" @click="panelClick">
         <el-collapse v-model="activeNames" @change="handleChange" accordion>
             <el-collapse-item title="SCENE" name="1">
                 <div class="collapse-item-style">
-                    backgroud:
+                    场景颜色:
                     <el-color-picker v-model="sceneColor" size="small" @active-change="sceneColorChange">
                     </el-color-picker>
                 </div>
+                <el-checkbox v-model="isShowAxes" @change="axesStatusChange">是否显示坐标轴</el-checkbox>
+                <el-checkbox v-model="isShowGrid" @change="gridStatusChange">是否显示网格</el-checkbox>
             </el-collapse-item>
-            <el-collapse-item title="CAMERA" name="2">
+            <el-collapse-item title="FOG" name="2">
+                <el-checkbox v-model="isShowFog" @change="fogStatusChange">是否添加雾</el-checkbox>
                 <div class="collapse-item-style">
-
+                    雾的颜色:
+                    <el-color-picker v-model="fog.color" size="small" @active-change="fogColorChange">
+                    </el-color-picker>
                 </div>
+                <div class="collapse-item-style">
+                    最近距离:
+                    <el-input-number v-model="fog.near" controls-position="right" @change="fogNearChange" size="small"></el-input-number>
+                </div>
+                <div class="collapse-item-style">
+                    最远距离:
+                    <el-input-number v-model="fog.far" controls-position="right" @change="fogFarChange" size="small"></el-input-number>
+                </div>
+            </el-collapse-item>
+            <el-collapse-item title="CAMERA" name="3">
+                <el-checkbox v-model="isShowCamera" @change="cameraStatusChange">是否显示相机</el-checkbox>
+            </el-collapse-item>
+            <el-collapse-item title="SHADOW" name="4">
+                <el-checkbox v-model="isShowShadow" @change="shadowStatusChange">是否显示阴影</el-checkbox>
+            </el-collapse-item>
+            <el-collapse-item title="SHADOW" name="4">
+                <el-checkbox v-model="isShowShadow" @change="shadowStatusChange">是否显示阴影</el-checkbox>
             </el-collapse-item>
         </el-collapse>
     </div>
@@ -33,7 +55,7 @@
 <script src="lib/stats.min.js"></script>
 <script src="lib/controls/OrbitControls.js"></script>
 <!--    element-ui   -->
-<script src="lib/element/vue.js"></script>
+<script src="lib/element/vue.min.js"></script>
 <script src="lib/element/index.js"></script>
 
 <script src="main/panel.js"></script>

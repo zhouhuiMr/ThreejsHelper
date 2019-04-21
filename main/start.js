@@ -5,13 +5,6 @@
  * @author zhouhui
  * */
 window.onload = function(){
-    //工作面板添加事件
-    document.getElementById("container").addEventListener('click',function(){
-        console.info(2222)
-        window.helper.controls.controls.reset();
-        window.helper.controls.controls.update();
-    },true);
-
     window.app = new Vue({
         el : "#app",
         data : data,
@@ -42,6 +35,7 @@ window.onload = function(){
         this.renderer = null;
 
         this.isUseFog = false;//是否启用雾
+        this.fog = null;
 
         //视角控制器
         this.isUseController = true;
@@ -54,6 +48,11 @@ window.onload = function(){
         //坐标
         this.isUseAxes = true;
         this.axesHelper = null;
+        //相机
+        this.isUseCameraHelper = false;
+        this.cameraHelper = null;
+        //阴影
+        this.isUseShadow = false;
 
         //其他动画
         this.animateQuee = [];
@@ -64,9 +63,9 @@ window.onload = function(){
         init : function(){
             this.scene = new THREE.Scene();
             this.scene.background = new THREE.Color(0xFFFFFF);
-            if(this.isUseFog){
-                this.scene.fog = new THREE.Fog(0xFFF68F,5,40);
-            }
+
+            this.fog = null;
+            this.scene.fog = this.fog;
 
             //设置摄像机
             this.camera = new THREE.PerspectiveCamera( 75, this.sceneWidth/this.sceneHeight, 1, 3000 );
@@ -88,6 +87,11 @@ window.onload = function(){
             //坐标
             this.axesHelper = new THREE.AxesHelper( this.coordinateSize );
             this.scene.add(this.axesHelper);
+            //相机
+            this.cameraHelper = new THREE.CameraHelper(this.camera);
+            if(this.isUseCameraHelper){
+                this.scene.add(this.cameraHelper);
+            }
         },
         animate : function(){
             var obj = this;
