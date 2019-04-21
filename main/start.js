@@ -5,6 +5,13 @@
  * @author zhouhui
  * */
 window.onload = function(){
+    //工作面板添加事件
+    document.getElementById("container").addEventListener('click',function(){
+        console.info(2222)
+        window.helper.controls.controls.reset();
+        window.helper.controls.controls.update();
+    },true);
+
     window.app = new Vue({
         el : "#app",
         data : data,

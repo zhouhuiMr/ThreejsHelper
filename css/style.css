@@ -30,15 +30,19 @@ html,body{
     height: 100%;
     top: 0px;
     left: 0px;
-    z-index: 100;
+    z-index: 0;
 }
 #app .controller_span{
+    position: absolute;
     float: right;
+    top: 0px;
+    right: 0px;
     width: 200px;
     height: auto;
     background: #ffffff;
     padding: 2px 5px 2px 5px;
-    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1)
+    box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+    z-index: 100;
 }
 .collapse-item-style{
     font-family: Microsoft YaHei,Heiti SC,tahoma,arial,Hiragino Sans GB,\\5B8B\4F53,sans-serif;
